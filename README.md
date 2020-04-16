@@ -181,3 +181,12 @@ apollo client develoer Tools
 을 깔면 크롬 개발자 도구에 apollo tab이 생긴다
 
 이 안에서 cache 등을 확인할 수 있다.
+
+### optional chaining
+
+아래 두 개의 구문은 같다.
+```js
+data && data.movie ? data.movie.medium_cover_image : ""
+
+data?.movie?.medium_cover_image
+```

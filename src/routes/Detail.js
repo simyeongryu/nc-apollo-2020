@@ -80,7 +80,9 @@ export default () => {
           </>
         )}
       </Column>
-      <Poster bg={data && data.movie ? data.movie.medium_cover_image : ""}></Poster>
+      {/* optional chaing. 삼항 연산자 대신 사용 가능 아래 구문은 같은 것이다. */}
+      {/* <Poster bg={data && data.movie ? data.movie.medium_cover_image : ""}></Poster> */}
+      <Poster bg={data?.movie?.medium_cover_image}></Poster>
     </Container>
   );
 };
