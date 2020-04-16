@@ -190,3 +190,8 @@ data && data.movie ? data.movie.medium_cover_image : ""
 
 data?.movie?.medium_cover_image
 ```
+
+# #2.0 Local State part One
+
+API에서 넘어온 데이터를 변경할 수 있음
+

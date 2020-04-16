@@ -12,6 +12,8 @@ const GET_MOVIES = gql`
     movies {
       id
       medium_cover_image
+      # isLiked는 백엔드에 없고 클라이언트에 있기 때문에 @client
+      isLiked @client
     }
   }
 `;
@@ -75,7 +77,7 @@ export default () => {
       {!loading && data.movies && (
         <Movies>
           {data.movies.map(m => (
-            <Movie key={m.id} id={m.id} bg={m.medium_cover_image} />
+            <Movie key={m.id} id={m.id} isLiked={m.isLiked} bg={m.medium_cover_image} />
           ))}
         </Movies>
       )}
