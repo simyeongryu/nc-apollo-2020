@@ -1,3 +1,3 @@
 import React from "react";
 
-export default () => "Detail";
+export default () => <h1>"Detail"</h1>;

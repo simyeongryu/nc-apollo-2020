@@ -59,3 +59,41 @@ public/index.html에 참조
 <link rel="stylesheet" href="%PUBLIC_URL%/reset.css" />
 ```
 
+# #1.0 Apollo Client
+
+그래프큐엘 API와 REST API의 가장 큰 차이점은?
+
+REST -> URL로 이동하면 JSON 데이터를 바로 얻는다.
+
+그래프 큐엘 -> Query문을 작성해야 한다.
+
+client를 만든다. 
+
+> https://www.apollographql.com/docs/react/get-started/
+
+apollo-boost
+
+는 그래프큐엘 요가같은 거.
+
+src/apollo.js 만든 후 client를 만든다.
+
+client로 React app을 감싸야한다.
+
+index.js 로 가서
+
+ApolloProvider로 App 컴포넌트를 감싸고 client를 넣어준다.
+```js
+import React from "react";
+import ReactDOM from "react-dom";
+import App from "./components/App";
+
+import { ApolloProvider } from "@apollo/react-hooks";
+import client from "./apollo";
+
+ReactDOM.render(
+  <ApolloProvider client={client}>
+    <App />
+  </ApolloProvider>,
+  document.getElementById("root")
+);
+```
