@@ -79,6 +79,19 @@ src/apollo.js 만든 후 client를 만든다.
 
 client로 React app을 감싸야한다.
 
+apollo.js
+```js
+import ApolloClient from "apollo-boost";
+
+const client = new ApolloClient({
+  // API uri
+  uri: "http://localhost:4000/"
+});
+
+export default client;
+
+```
+
 index.js 로 가서
 
 ApolloProvider로 App 컴포넌트를 감싸고 client를 넣어준다.
@@ -97,3 +110,27 @@ ReactDOM.render(
   document.getElementById("root")
 );
 ```
+
+# #1.1 GET_MOVIES Query
+
+홈페이지 첫 화면 위쪽에 영화의 id와 포스터를 나오게 하기 위해 query를 작성
+
+```graphql
+{
+  movies {
+    id
+    medium_cover_image
+  }
+}
+```
+
+
+### Home.js
+
+자바스크립트는 기본적으로 그래프 큐엘을 이해하지 못한다. 아래 구문 작성
+
+```js
+import { gql } from "apollo-boost";
+```
+
+쿼리는 component 밖에 존재하게 된다.
