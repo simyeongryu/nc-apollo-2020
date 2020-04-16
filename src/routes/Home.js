@@ -1,7 +1,10 @@
 import React from "react";
 import styled from "styled-components";
+
 import { gql } from "apollo-boost";
 import { useQuery } from "@apollo/react-hooks";
+
+import Movie from "../components/Movie";
 
 // 그래프 큐엘 쿼리
 const GET_MOVIES = gql`
@@ -59,6 +62,8 @@ export default () => {
         <Subtitle>Mighty GraphQL</Subtitle>
       </Header>
       {loading && <Loading>Loading...</Loading>}
+      {/* !loading과 data.movies 가 true면 수행 */}
+      {!loading && data.movies && data.movies.map(m => <Movie key={m.id} id={m.id} />)}
     </Container>
   );
 };
