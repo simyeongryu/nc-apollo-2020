@@ -7,6 +7,17 @@ const client = new ApolloClient({
     // 아래의 Movie는 graphQL schema에서 정의한 것.
     Movie: {
       isLiked: () => false
+    },
+    Mutation: {
+      toggleLikeMovie: (_, { id, isLiked }, { cache }) => {
+        cache.writeData({
+          // 해당 id의 data를 수정
+          id: `Movie:${id}`,
+          data: {
+            isLiked: !isLiked
+          }
+        });
+      }
     }
   }
 });

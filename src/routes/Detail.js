@@ -11,11 +11,13 @@ const GET_MOVIE = gql`
   query getMovie($id: Int!) {
     # graphql api로 보내는 부분
     movie(id: $id) {
+      id
       title
       medium_cover_image
       language
       rating
       description_intro
+      isLiked @client
     }
   }
 `;
@@ -68,7 +70,11 @@ export default () => {
     <Container>
       <Column>
         {/* 데이터를 불러오는 시간이 있다. 반드시 삼항 연산자를 이용해서 조건 분기를 하자 */}
-        <Title>{loading ? "Loading..." : data.movie.title}</Title>
+        <Title>
+          {loading
+            ? "Loading..."
+            : `${data.movie.title} ${data.movie.isLiked ? "😍" : "😐"}`}
+        </Title>
         {/* 로딩 중일 때는 아래 내용이 보이지 않는다. */}
         {!loading && data.movie && (
           // 두 개를 return 하기 때문에 fragments 사용
