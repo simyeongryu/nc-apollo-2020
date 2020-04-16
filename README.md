@@ -174,3 +174,10 @@ export default () => {
 Apollo는 자동으로 cache를 저장해서 redux가 하는 일을 한다.
 
 한 번 불러들인 걸 저장. fetch를 두 번 하지 않는다.
+
+크롬 확장 프로그램
+
+apollo client develoer Tools
+을 깔면 크롬 개발자 도구에 apollo tab이 생긴다
+
+이 안에서 cache 등을 확인할 수 있다.

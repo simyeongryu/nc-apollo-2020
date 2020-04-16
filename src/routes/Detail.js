@@ -32,6 +32,7 @@ const Container = styled.div`
 
 const Column = styled.div`
   margin-left: 10px;
+  width: 50%;
 `;
 
 const Title = styled.h1`
@@ -49,6 +50,7 @@ const Description = styled.p`
 `;
 
 const Poster = styled.div`
+  background-image: url(${props => props.bg});
   width: 25%;
   height: 60%;
   background-color: transparent;
@@ -65,11 +67,20 @@ export default () => {
   return (
     <Container>
       <Column>
-        <Title>Name</Title>
-        <Subtitle>English</Subtitle>
-        <Description>lalalal</Description>
+        {/* 데이터를 불러오는 시간이 있다. 반드시 삼항 연산자를 이용해서 조건 분기를 하자 */}
+        <Title>{loading ? "Loading..." : data.movie.title}</Title>
+        {/* 로딩 중일 때는 아래 내용이 보이지 않는다. */}
+        {!loading && data.movie && (
+          // 두 개를 return 하기 때문에 fragments 사용
+          <>
+            <Subtitle>
+              {data.movie.language} | {data.movie.rating}
+            </Subtitle>
+            <Description>{data.movie.description_intro}</Description>
+          </>
+        )}
       </Column>
-      <Poster></Poster>
+      <Poster bg={data && data.movie ? data.movie.medium_cover_image : ""}></Poster>
     </Container>
   );
 };
