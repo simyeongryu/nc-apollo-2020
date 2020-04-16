@@ -167,3 +167,10 @@ export default () => {
 
 # #1.2 GET_MOVIE Query
 
+
+
+# #1.3 Apollo Cache and Styles
+
+Apollo는 자동으로 cache를 저장해서 redux가 하는 일을 한다.
+
+한 번 불러들인 걸 저장. fetch를 두 번 하지 않는다.
